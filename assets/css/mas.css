@@ -89,6 +89,8 @@ h3.mas-head {
   border-radius: 10px;
 }
 .mas-item.mas-text a.mas-btn-cta {
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   text-decoration: none;
   padding: 3px 2rem;
@@ -120,6 +122,8 @@ h3.mas-head {
 .mas-item.mas-image a.mas-btn-cta {
   position: absolute;
   bottom: 1.5rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   left: 50%;
   transform: translateX(-50%);
