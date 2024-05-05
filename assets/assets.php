@@ -37,4 +37,23 @@ function mas_assets() {
 	wp_enqueue_style( 'mas-css', MAS_URL . 'assets/css/mas' . $suffix . '.css', array(), '1.0.0', 'all' );
 	wp_enqueue_script( 'mass-js', MAS_URL . 'assets/js/mas-js' . $suffix . '.js', array( 'jquery' ), '1.0.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'mas_assets' );
+
+/**
+ * Load Admin Style and Scripts
+ */
+function mas_admin_assets() {
+	$suffix = mas_is_devmode() ? '' : '.min';
+	wp_enqueue_style( 'mas-admin-css', MAS_URL . 'assets/css/mas-admin' . $suffix . '.css', array(), '1.0.0', 'all' );
+}
+
+/**
+ * Load Style and Scripts
+ */
+function mas_load_necessary_style_and_scripts() {
+	$mas_enable = carbon_get_theme_option( 'mas_enable' );
+	if ( $mas_enable ) {
+		add_action( 'wp_enqueue_scripts', 'mas_assets' );
+		add_action( 'admin_enqueue_scripts', 'mas_admin_assets' );
+	}
+}
+add_action( 'init', 'mas_load_necessary_style_and_scripts' );
