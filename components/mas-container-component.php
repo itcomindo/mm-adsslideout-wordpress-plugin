@@ -36,11 +36,17 @@ function mas_container() {
 			} elseif ( 'custom' === $mas_source ) {
 				mas_get_custom_ads();
 			} elseif ( 'post_tag' === $mas_source ) {
-				return;
+				?>
+				<div class="mas-item">Under Construction</div>
+				<?php
 			} elseif ( 'custom_post_type' === $mas_source ) {
-				return;
+				?>
+				<div class="mas-item">Under Construction</div>
+				<?php
 			} elseif ( 'post_ids' === $mas_source ) {
-				return;
+				?>
+				<div class="mas-item">Under Construction</div>
+				<?php
 			}
 			?>
 		</div>

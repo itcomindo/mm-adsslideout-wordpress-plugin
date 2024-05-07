@@ -340,13 +340,11 @@ function mas_options_fields() {
 
 					// Head for ads.
 					Field::make( 'text', 'mas_head', 'Head' )
-					// ->set_required( true )
 					->set_default_value( 'Promo' )
 					->set_help_text( 'Set head for ads, e.g "Promo"' ),
 
 					// Content for ads.
 					Field::make( 'textarea', 'mas_content', 'Content' )
-					// ->set_required( true )
 					->set_default_value( 'Promo Discount iPhone Pro Max hanya 10Jt asli bukan penipuan' )
 					->set_help_text( 'Set content for ads, e.g "Promo Discount iPhone Pro Max hanya 10Jt asli bukan penipuan"' )
 					->set_conditional_logic(
@@ -360,7 +358,6 @@ function mas_options_fields() {
 					),
 
 					Field::make( 'image', 'mas_image', 'Image' )
-					// ->set_required( true )
 					->set_value_type( 'url' )
 					->set_help_text( 'Upload image for ads, recomended size is 250x250px' )
 					->set_conditional_logic(
@@ -375,12 +372,10 @@ function mas_options_fields() {
 
 					// Link for ads.
 					Field::make( 'text', 'mas_link', 'Link' )
-					// ->set_required( true )
 					->set_help_text( 'Set link for ads' ),
 
 					// Button text for ads.
 					Field::make( 'text', 'mas_button_text', 'Button Text' )
-					// ->set_required( true ).
 					->set_default_value( 'Buy Now' )
 					->set_help_text( 'Set button text for ads, e.g Buy Now' ),
 
