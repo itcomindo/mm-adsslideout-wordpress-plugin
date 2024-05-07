@@ -27,9 +27,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
         //close masAds start
         function mas() {
 
+            var $delay = jQuery('#mas-pr').attr('data-mas-delay');
+
             setTimeout(function () {
                 jQuery('#mas-pr').removeClass('mas-sleep');
-            }, 2000);
+            }, $delay);
 
             var $masCloseBtn = jQuery('#mas-close');
             $masCloseBtn.on('click', function () {
@@ -43,8 +45,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         //Mas Load Slick Slider start
         function masSlickSlider() {
             var $isSLide = jQuery('#mas-pr').attr('data-show-mas');
-            console.log($isSLide);
-
             if ('slide' === $isSLide) {
                 var $duration = jQuery('#mas-pr').attr('data-mas-duration');
                 console.log($duration);

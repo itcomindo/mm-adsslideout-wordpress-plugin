@@ -39,6 +39,20 @@ function mas_assets() {
 }
 
 /**
+ *  Custom CSS
+ */
+function mas_custom_css() {
+	$mas_enable = carbon_get_theme_option( 'mas_enable' );
+	if ( $mas_enable ) {
+		$mas_custom_css = carbon_get_theme_option( 'mas_custom_css' );
+		if ( $mas_custom_css ) {
+			echo '<style>' . esc_html( $mas_custom_css ) . '</style>';
+		}
+	}
+}
+
+
+/**
  * Load Admin Style and Scripts
  */
 function mas_admin_assets() {
@@ -53,6 +67,7 @@ function mas_load_necessary_style_and_scripts() {
 	$mas_enable = carbon_get_theme_option( 'mas_enable' );
 	if ( $mas_enable ) {
 		add_action( 'wp_enqueue_scripts', 'mas_assets' );
+		add_action( 'wp_head', 'mas_custom_css' );
 		add_action( 'admin_enqueue_scripts', 'mas_admin_assets' );
 	}
 }

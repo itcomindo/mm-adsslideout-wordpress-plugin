@@ -53,21 +53,22 @@ function mas_options_fields() {
 					'right' => 'Right',
 				)
 			)
-					->set_default_value( 'left' )
-					->set_help_text( 'Select position for MAS' ),
+			->set_default_value( 'left' )
+			->set_help_text( 'Select position for MAS' ),
 
-			// Z-index for MAS.
-			Field::make( 'text', 'mas_zindex', 'Z-index' )
+			// Delay time to show MAS.
+			Field::make( 'text', 'mas_delay', 'Delay Time' )
+			->set_required( true )
 			->set_width( 33 )
 			->set_attribute( 'type', 'number' )
-		->set_default_value( '9999' )
-		->set_help_text( 'Set z-index for MAS, you can increase or decrease the value according another elements on your site.' ),
+			->set_default_value( 2000 )
+			->set_help_text( 'Set delay time to show MAS in milisecond, e.g 5000 for 5 seconds' ),
 
 			// Enable link in close ads.
 			Field::make( 'checkbox', 'mas_close_link', 'Enable Link in Close Button' )
 			->set_option_value( 'yes' )
 			->set_default_value( false )
-			->set_help_text( 'Enable or disable link in close button' ),
+			->set_help_text( 'Enable or disable link in close button, this mean when somebody close your ads will open close button link in new tab.' ),
 
 			// Link in close button.
 			Field::make( 'text', 'mas_close_link_url', 'Close Button Link' )
@@ -152,6 +153,27 @@ function mas_options_fields() {
 			->set_default_value( '#ffffff' )
 			->set_help_text( 'Set text color for close button' ),
 
+			// Z-index for MAS.
+			Field::make( 'text', 'mas_zindex', 'Z-index' )
+			->set_width( 33 )
+			->set_attribute( 'type', 'number' )
+			->set_default_value( '9999' )
+			->set_help_text( 'Set z-index for MAS, you can increase or decrease the value according another elements on your site.' ),
+
+			// Z-index for MAS.
+			Field::make( 'text', 'mas_horizontal_position', 'Left/Right Position' )
+			->set_width( 33 )
+			->set_attribute( 'type', 'number' )
+			->set_default_value( '4' )
+			->set_help_text( 'Set this to increase/decrease left or right position' ),
+
+			// Z-index for MAS.
+			Field::make( 'text', 'mas_vertical_position', 'Bottom Position' )
+			->set_width( 33 )
+			->set_attribute( 'type', 'number' )
+			->set_default_value( '2' )
+			->set_help_text( 'Set this to increase/decrease left or right position' ),
+
 			// #####################################################################
 			// Source ADS
 			// #####################################################################
@@ -197,7 +219,6 @@ function mas_options_fields() {
 			// Select post category ID if choose post_category.
 			Field::make( 'text', 'mas_post_category', 'ID Post Category' )
 			->set_required( true )
-			->set_attribute( 'type', 'number' )
 			->set_help_text( 'Set post category ID, e.g 1,2,3' )
 			->set_conditional_logic(
 				array(
@@ -319,13 +340,13 @@ function mas_options_fields() {
 
 					// Head for ads.
 					Field::make( 'text', 'mas_head', 'Head' )
-					->set_required( true )
+					// ->set_required( true )
 					->set_default_value( 'Promo' )
 					->set_help_text( 'Set head for ads, e.g "Promo"' ),
 
 					// Content for ads.
 					Field::make( 'textarea', 'mas_content', 'Content' )
-					->set_required( true )
+					// ->set_required( true )
 					->set_default_value( 'Promo Discount iPhone Pro Max hanya 10Jt asli bukan penipuan' )
 					->set_help_text( 'Set content for ads, e.g "Promo Discount iPhone Pro Max hanya 10Jt asli bukan penipuan"' )
 					->set_conditional_logic(
@@ -339,7 +360,7 @@ function mas_options_fields() {
 					),
 
 					Field::make( 'image', 'mas_image', 'Image' )
-					->set_required( true )
+					// ->set_required( true )
 					->set_value_type( 'url' )
 					->set_help_text( 'Upload image for ads, recomended size is 250x250px' )
 					->set_conditional_logic(
@@ -354,12 +375,12 @@ function mas_options_fields() {
 
 					// Link for ads.
 					Field::make( 'text', 'mas_link', 'Link' )
-					->set_required( true )
+					// ->set_required( true )
 					->set_help_text( 'Set link for ads' ),
 
 					// Button text for ads.
 					Field::make( 'text', 'mas_button_text', 'Button Text' )
-					->set_required( true )
+					// ->set_required( true ).
 					->set_default_value( 'Buy Now' )
 					->set_help_text( 'Set button text for ads, e.g Buy Now' ),
 
@@ -415,6 +436,10 @@ function mas_options_fields() {
                 <% } %>
             '
 				),
+
+			// Textarea for custom css.
+			Field::make( 'textarea', 'mas_custom_css', 'Custom CSS' )
+			->set_help_text( 'Add custom css for MAS' ),
 
 		)
 	);
