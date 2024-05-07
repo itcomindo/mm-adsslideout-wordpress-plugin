@@ -31,6 +31,7 @@ function mas_random_ads() {
 			$mas_ads_individual_text_color        = $ads['mas_ads_individual_text_color'];
 			$mas_ads_individual_button_bg_color   = $ads['mas_ads_individual_button_bg_color'];
 			$mas_ads_individual_button_text_color = $ads['mas_ads_individual_button_text_color'];
+
 			if ( 'image' === $mas_type ) {
 				$content = $ads['mas_image'];
 				mas_image( $head, $content, $button_text, $link );

@@ -166,6 +166,24 @@ define( 'MAS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MAS_URL', plugin_dir_url( __FILE__ ) );
 
 
+/**
+ * Shortcut
+ */
+function mas_shortcut_to_options() {
+	// Current User can manage options and logged in.
+	if ( current_user_can( 'manage_options' ) && is_user_logged_in() ) {
+		// Link to options page.
+		$shortcut = '<a class="mas-shortcut" href="' . esc_url( admin_url( 'admin.php?page=crb_carbon_fields_container_mas_options.php' ) ) . '">' . esc_html__( 'Options Page', 'mas' ) . '</a>';
+		// Output.
+		return $shortcut;
+	} else {
+		return;
+	}
+}
+
+
+
+
 
 // required files.
 require_once MAS_PATH . 'assets/assets.php';

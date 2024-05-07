@@ -8,6 +8,20 @@
 #mas-pr div {
   box-sizing: border-box;
 }
+a.mas-shortcut {
+  position: absolute;
+  font-size: 12px;
+  text-decoration: none;
+  left: 1rem;
+  top: 8px;
+  z-index: 2;
+  line-height: 1;
+  margin: 0;
+  padding: 4px 6px;
+  background: darkred;
+  color: white;
+  border-radius: 5px;
+}
 #mas-pr {
   position: fixed;
   z-index: 9999;

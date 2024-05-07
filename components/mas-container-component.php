@@ -27,6 +27,8 @@ function mas_container() {
 		<?php
 		// phpcs:ignore
 		echo mas_beh()['close'];
+		// phpcs:ignore
+		echo mas_shortcut_to_options();
 		?>
 		<div id="mas-wr">
 			<?php
@@ -44,9 +46,7 @@ function mas_container() {
 				<div class="mas-item">Under Construction</div>
 				<?php
 			} elseif ( 'post_ids' === $mas_source ) {
-				?>
-				<div class="mas-item">Under Construction</div>
-				<?php
+				mas_get_post_id_ads();
 			}
 			?>
 		</div>

@@ -17,6 +17,7 @@ require_once MAS_PATH . 'components/mas-random-ads.php';
 require_once MAS_PATH . 'components/mas-text-ads.php';
 require_once MAS_PATH . 'components/mas-image-ads.php';
 require_once MAS_PATH . 'components/mas-slide-ads.php';
+require_once MAS_PATH . 'components/mas-post-id-component.php';
 
 
 /**
@@ -52,9 +53,10 @@ function mas_get_ads_query() {
 		} elseif ( 'post_ids' === $mas_source ) {
 			$post_ids = carbon_get_theme_option( 'mas_post_ids' );
 			$arg      = array(
-				'post_type'      => 'post',
-				'posts_per_page' => $mas_number,
-				'post__in'       => $post_ids,
+				'post_type' => 'post',
+				// phpcs :ignore
+				// 'posts_per_page' => $mas_number,.
+				'post__in'  => $post_ids,
 			);
 		}
 		$mas_query = new WP_Query( $arg );

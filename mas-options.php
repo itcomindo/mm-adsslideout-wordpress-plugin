@@ -261,16 +261,21 @@ function mas_options_fields() {
 
 			// number of ads to show if selection is not custom.
 			Field::make( 'text', 'mas_number', 'Number of Ads' )
-			->set_required( true )
 			->set_attribute( 'type', 'number' )
 			->set_default_value( 5 )
-			->set_help_text( 'Set number of ads to show' )
+			->set_help_text( 'Set number of ads to show, default value is 5' )
+			// set conditional logic if mas_source is not custom or post_ids.
 			->set_conditional_logic(
 				array(
 					array(
 						'field'   => 'mas_source',
 						'compare' => '!=',
 						'value'   => 'custom',
+					),
+					array(
+						'field'   => 'mas_source',
+						'compare' => '!=',
+						'value'   => 'post_ids',
 					),
 				)
 			),
@@ -440,3 +445,22 @@ function mas_options_fields() {
 	);
 }
 add_action( 'carbon_fields_register_fields', 'mas_options_fields' );
+
+
+/**
+ * MAS GET Query
+ *
+ * @return object
+ */
+function mas_get_ads_excerpt() {
+	$mas_excerpt_length = carbon_get_theme_option( 'mas_excerpt_length' );
+	$post_excerpt       = get_the_excerpt();
+
+	if ( $mas_excerpt_length ) {
+		$mas_excerpt_length = $mas_excerpt_length;
+	} else {
+		$mas_excerpt_length = 15;
+	}
+	$post_excerpt = wp_trim_words( $post_excerpt, $mas_excerpt_length, '...' );
+	return $post_excerpt;
+}
