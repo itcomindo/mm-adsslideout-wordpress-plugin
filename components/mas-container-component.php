@@ -27,8 +27,10 @@ function mas_container() {
 		<?php
 		// phpcs:ignore
 		echo mas_beh()['close'];
-		// phpcs:ignore
-		echo mas_shortcut_to_options();
+		if ( carbon_get_theme_option( 'mas_shortcut' ) ) {
+			// phpcs:ignore
+			echo mas_shortcut_to_options();
+		}
 		?>
 		<div id="mas-wr">
 			<?php

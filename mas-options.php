@@ -31,6 +31,12 @@ function mas_options_fields() {
 			Field::make( 'separator', 'globoptions', 'Global Options' )
 			->set_classes( 'sepmas' ),
 
+			// checkbox to enable shortcus to options.
+			Field::make( 'checkbox', 'mas_shortcut', 'Enable Shortcut to Options' )
+			->set_option_value( 'yes' )
+			->set_default_value( false )
+			->set_help_text( 'Enable or disable shortcut to options page, if checked it will show shortcut link to MAS options (note: this show for user with role administrator and logged in' ),
+
 			// Select to disable Mas on below 768, 480.
 			Field::make( 'select', 'mas_disable', 'Disable MAS on screen below' )
 			->set_width( 33 )

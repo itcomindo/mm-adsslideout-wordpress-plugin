@@ -42,16 +42,37 @@ function mas_get_post_id_random_ads() {
 	if ( $the_query->have_posts() ) {
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
-			$post_title      = get_the_title();
-			$mas_excerpt     = mas_get_ads_excerpt();
-			$mas_button_text = carbon_get_theme_option( 'mas_button_text' );
-			?>
+			$post_title         = get_the_title();
+			$mas_excerpt        = mas_get_ads_excerpt();
+			$mas_button_text    = carbon_get_theme_option( 'mas_button_text' );
+			$mas_featured_image = carbon_get_theme_option( 'mas_featured_image' );
+			if ( $mas_featured_image ) {
+				$featured_image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+				?>
+			<div class="mas-item mas-text mas-has-featured-image">
+				<div class="mas-item-top">
+					<div class="mas-fim-wr">
+						<img src="<?php echo esc_url( $featured_image ); ?>" alt="<?php echo esc_html( $post_title ); ?>">
+					</div>
+					<div class="mas-head-wr">
+						<h3 class="mas-head"><?php echo esc_html( $post_title ); ?></h3>
+					</div>
+				</div>
+				<div class="mas-item-bot">
+					<span class="mas-ads-content"><?php echo esc_html( $mas_excerpt ); ?></span>
+					<a class="mas-btn-cta mas-btn" style="background-color: <?php echo esc_html( mas_beh()['button_bg_color'] ); ?>; color: <?php echo esc_html( mas_beh()['button_text_color'] ); ?>;" href="<?php echo esc_url( get_the_permalink() ); ?>" title="<?php echo esc_html( $post_title ); ?>" rel="noopener nofollow"><?php echo esc_html( $mas_button_text ); ?></a>	
+				</div>
+			</div>
+				<?php
+			} else {
+				?>
 			<div class="mas-item mas-text">
 				<h3 class="mas-head"><?php echo esc_html( $post_title ); ?></h3>
 				<span class="mas-ads-content"><?php echo esc_html( $mas_excerpt ); ?></span>
 				<a class="mas-btn-cta mas-btn" style="background-color: <?php echo esc_html( mas_beh()['button_bg_color'] ); ?>; color: <?php echo esc_html( mas_beh()['button_text_color'] ); ?>;" href="<?php echo esc_url( get_the_permalink() ); ?>" title="<?php echo esc_html( $post_title ); ?>" rel="noopener nofollow"><?php echo esc_html( $mas_button_text ); ?></a>
 			</div>
-			<?php
+				<?php
+			}
 		}
 	}
 	wp_reset_postdata();
